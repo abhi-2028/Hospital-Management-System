@@ -71,5 +71,4 @@ const hospitalListings = [
   },
 ];
 
-// Export the array directly so requiring modules get the list (not an object wrapper)
 module.exports = hospitalListings;
