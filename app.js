@@ -26,18 +26,21 @@ async function main() {
 }
 
 app.get("/", (req, res) => {
-    res.render("home");
+    res.send("Hey this is home page");
 });
 
+//Index Route
 app.get("/hospitals", async (req, res) => {
     let allHospitals = await Hospital.find({});
     res.render("hospitals/index", { allHospitals });
 });
 
+//New Route
 app.get("/hospitals/new", (req, res) => {
     res.render("hospitals/new");
 });
 
+//Show Route
 app.get("/hospitals/:id", async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -48,12 +51,25 @@ app.get("/hospitals/:id", async (req, res) => {
     res.render("hospitals/show", { hospital });
 });
 
+//Edit Route
+app.get("/hospitals/:id/edit", async (req, res) => {
+    const { id } = req.params;
+    const hospital = await Hospital.findById(id);
+    res.render("hospitals/edit", { hospital });
+});
+
+// Update Route
+app.put("/hospitals/:id", async (req, res) => {
+    const { id } = req.params;
+    await Hospital.findByIdAndUpdate(id, { ...req.body.hospital }, { new: true, runValidators: true });
+    res.redirect(`/hospitals`);
+});
+
+//Create Route
 app.post("/hospitals", async (req, res) => {
-    const { name, address, contact, image } = req.body;
-    const hospital = new Hospital({ name, address, contact, image });
+    const hospital = new Hospital(req.body.hospital);
     await hospital.save();
     res.redirect("/hospitals");
-
 });
 
 app.listen(port, () => {

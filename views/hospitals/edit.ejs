@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Hospital</title>
+</head>
+<body>
+  <h1>Edit Hospital</h1>
+  <form action="/hospitals/<%= hospital._id %>?_method=PUT" method="POST">
+    <label>Name</label>
+    <input type="text" name="hospital[name]" value="<%= hospital.name %>">
+    <br>
+
+    <label>Address</label>
+    <input type="text" name="hospital[address]" value="<%= hospital.address %>">
+    <br>
+
+    <label>Contact</label>
+    <input type="text" name="hospital[contact]" value="<%= hospital.contact %>">
+    <br>
+
+    <label>Image URL</label>
+    <input type="text" name="hospital[image]" value="<%= hospital.image %>">
+    <br>
+
+    <button type="submit">Update Hospital</button>
+  </form>
+
+  <p><a href="/hospitals/<%= hospital._id %>">Cancel</a></p>
+</body>
+</html>

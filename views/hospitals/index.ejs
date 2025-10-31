@@ -12,7 +12,9 @@
     </form>
     <ul>
         <% for(let hospital of allHospitals) { %>
-            <li><a href="/hospitals/<%= hospital._id %>"><%= hospital.name %></a></li>
+            <li>
+                <a href="/hospitals/<%= hospital._id %>"><%= hospital.name %></a>
+            </li>
         <% } %>
     </ul>
 </body>

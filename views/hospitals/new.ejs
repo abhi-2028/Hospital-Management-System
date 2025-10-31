@@ -6,14 +6,15 @@
     <title>Hospital Management System</title>
 </head>
 <body>
+    <h3>Add new Hospital :</h3>
     <form action="/hospitals" method="POST">
-        <input type="text" placeholder="Enter Name" name="name">
+        <input type="text" placeholder="Enter Name" name="hospital[name]">
         <br>
-        <input type="text" placeholder="Enter Address" name="address">
+        <input type="text" placeholder="Enter Address" name="hospital[address]">
         <br>
-        <input type="text" placeholder="Contact Number" name="contact">
+        <input type="text" placeholder="Contact Number" name="hospital[contact]">
         <br>
-        <input type="text" placeholder="Image URL" name="image">
+        <input type="text" placeholder="Image URL" name="hospital[image]">
         <br>
         <button type="submit">Create Hospital</button>
     </form>
