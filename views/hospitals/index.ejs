@@ -1,13 +1,21 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <form action="/hospitals/new" method="get">
-        <button>Add Hospital</button>
-    </form>
-    <ul>
-        <% for(let hospital of allHospitals) { %>
-            <li>
-                <a href="/hospitals/<%= hospital._id %>"><%= hospital.name %></a>
-            </li>
-        <% } %>
-    </ul>
-</body>
+<h3>All Hospitals</h3>
+<form action="/hospitals/new" method="get">
+  <button>Add Hospital</button>
+</form>
+<div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
+  <% for(let hospital of allHospitals) { %>
+    <a href="/hospitals/<%= hospital._id %>" class="hospital-link">
+  <div class="card col hospital-card">
+    <img src="<%= hospital.image %>" class="card-img-top" alt="Hospital" style="height: 20rem" />
+    <div class="card-img-overlay">
+
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= hospital.name %></h5>
+      <p class="card-text">Contact: <%= hospital.contact %></p>
+    </div>
+  </div>
+</a>
+  <% } %>
+</div>
