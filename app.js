@@ -29,8 +29,12 @@ async function main() {
 }
 
 app.get("/", (req, res) => {
-    res.send("Hey this is home page");
+    res.redirect("/home");
 });
+
+app.get("/home", (req,res) => {
+    res.render("home.ejs")
+})
 
 //Index Route
 app.get("/hospitals", async (req, res) => {
