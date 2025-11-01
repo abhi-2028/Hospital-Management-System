@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const methodOverride = require("method-override");
 const Hospital = require('./models/hospital');
 const path = require("path");
+const ejsMate = require('ejs-mate');
 
 const port = 8080;
 
@@ -12,6 +13,8 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.engine('ejs', ejsMate);
+app.use(express.static(path.join(__dirname, "/public")));
 
 const MONGO_URL = 'mongodb://127.0.0.1:27017/HospitalSystem';
 
@@ -71,6 +74,14 @@ app.post("/hospitals", async (req, res) => {
     await hospital.save();
     res.redirect("/hospitals");
 });
+
+//Delete route
+app.delete("/hospitals/:id", async(req,res) => {
+    let {id} = req.params;
+    let deleteHospital = await Hospital.findByIdAndDelete(id);
+    console.log(deleteHospital);
+    res.redirect("/hospitals");
+})
 
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);
