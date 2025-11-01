@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Management System</title>
-</head>
-<body>
-    <h3>Add new Hospital :</h3>
-    <form action="/hospitals" method="POST">
-        <input type="text" placeholder="Enter Name" name="hospital[name]">
-        <br>
-        <input type="text" placeholder="Enter Address" name="hospital[address]">
-        <br>
-        <input type="text" placeholder="Contact Number" name="hospital[contact]">
-        <br>
-        <input type="text" placeholder="Image URL" name="hospital[image]">
-        <br>
-        <button type="submit">Create Hospital</button>
-    </form>
-</body>
-</html>
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h3 class="mb-4 text-center">Add New Hospital</h3>
+        <form action="/hospitals" method="POST">
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Name of Hospital</label>
+                <input type="text" id="name" placeholder="Enter Name" name="hospital[name]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" id="address" placeholder="Enter Address" name="hospital[address]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact Number</label>
+                <input type="text" id="contact" placeholder="Enter Contact Number" name="hospital[contact]" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image URL</label>
+                <input type="text" id="image" placeholder="Enter Image URL" name="hospital[image]" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-light w-100">Create Hospital</button>
+        </form>
+    </div>
+</div>
